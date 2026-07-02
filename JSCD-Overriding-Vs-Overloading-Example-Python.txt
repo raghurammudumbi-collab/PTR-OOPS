@@ -1,0 +1,17 @@
+class Animal:
+    def sound(self, type=None):
+        if type:
+            print(f"Animal sound: {type}")
+        else:
+            print("Animal sound")
+
+class Dog(Animal):
+    def sound(self, type=None):
+        if type:
+            print(f"Dog sound: {type}")
+        else:
+            print("Dog barks")
+
+a = Dog()
+a.sound()          # Overriding -> Dog barks
+a.sound("growl")   # Overloading-like -> Dog sound: growl
