@@ -1,0 +1,31 @@
+// Demonstrating Overloading and Overriding
+
+class Calculator {
+    // Method Overloading: same name, different parameters
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    double add(double a, double b) {
+        return a + b;
+    }
+}
+class AdvancedCalculator extends Calculator {
+    // Method Overriding: same name, same parameters, different behavior
+    @Override
+    int add(int a, int b) {
+        System.out.println("Adding integers in AdvancedCalculator");
+        return super.add(a, b) + 10; // modified behavior
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Calculator calc = new Calculator();
+        System.out.println(calc.add(2, 3));       // Overloaded method
+        System.out.println(calc.add(2.5, 3.5));   // Overloaded method
+
+        AdvancedCalculator advCalc = new AdvancedCalculator();
+        System.out.println(advCalc.add(2, 3));    // Overridden method
+    }
+}
