@@ -1,0 +1,70 @@
+from abc import ABC, abstractmethod
+
+class Animal(ABC):
+    @abstractmethod
+    def makeSound(self):
+        pass
+
+class Dog(Animal):
+    def makeSound(self):
+        print("Woof!")
+
+class Cat(Animal):
+    def makeSound(self):
+        print("Meow!")
+
+a = Dog()
+a.makeSound()
+
+
+=============================
+
+from abc import ABC, abstractmethod
+
+class Payment(ABC):
+    @abstractmethod
+    def pay(self, amount):
+        pass
+
+class CreditCard(Payment):
+    def pay(self, amount):
+        print(f"Paid {amount} using Credit Card.")
+
+class PayPal(Payment):
+    def pay(self, amount):
+        print(f"Paid {amount} using PayPal.")
+
+p = PayPal()
+p.pay(100.0)
+
+
+=============================
+
+from abc import ABC, abstractmethod
+
+class Repository(ABC):
+    @abstractmethod
+    def save(self, entity):
+        pass
+
+    @abstractmethod
+    def findById(self, id):
+        pass
+
+class User:
+    def __init__(self, name):
+        self.name = name
+
+class UserRepository(Repository):
+    def save(self, entity):
+        print(f"Saving user: {entity.name}")
+
+    def findById(self, id):
+        return User(f"User{id}")
+
+repo = UserRepository()
+repo.save(User("Alice"))
+print(repo.findById(1).name)
+
+
+=============================
